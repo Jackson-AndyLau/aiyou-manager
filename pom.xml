@@ -7,9 +7,7 @@
 		<artifactId>aiyou-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.huazai.b2c.aiyou</groupId>
 	<artifactId>aiyou-manager</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<dependencies>
 		<dependency>
@@ -18,6 +16,19 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+	<!-- 配置tomcat插件 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8080</port>
+					<path>/</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<modules>
 		<module>aiyou-manager-pojo</module>
 		<module>aiyou-manager-dao</module>
