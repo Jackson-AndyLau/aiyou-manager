@@ -5,7 +5,7 @@ package com.huazai.b2c.aiyou.service;
  * @author HuaZai
  * @contact who.seek.me@java98k.vip
  *          <ul>
- * @description TODO
+ * @description 员工服务层
  *              </ul>
  * @className EmployeeService
  * @package com.huazai.b2c.aiyou.service
