@@ -5,15 +5,16 @@ package com.huazai.b2c.aiyou.mapper;
  * @author HuaZai
  * @contact who.seek.me@java98k.vip
  *          <ul>
- * @description 员工mapper类
+ * @description 测试
  *              </ul>
- * @className EmployeeMapper
+ * @className TDubboMapper
  * @package com.huazai.b2c.aiyou.mapper
- * @createdTime 2019年5月3日 上午10:37:12
+ * @createdTime 2017年06月07日
  *
  * @version V1.0.0
  */
-public class EmployeeMapper
+public interface TDubboMapper
 {
 
+	public String getLocalDate();
 }
