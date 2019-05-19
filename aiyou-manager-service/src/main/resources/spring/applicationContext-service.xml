@@ -14,7 +14,8 @@
 
 	<!-- 配置service扫描包 -->
 	<context:component-scan
-		base-package="com.huazai.b2c.aiyou.service"></context:component-scan>
+		base-package="com.huazai.b2c.aiyou.service" />
+	<bean id="tDubboServiceImpl" class="com.huazai.b2c.aiyou.service.impl.TDubboServiceImpl"/>
 
 	<!-- 使用Dubbo发布服务 -->
 	<!-- 提供方应用信息，用来计算依赖关系 -->
@@ -22,12 +23,10 @@
 	<dubbo:registry protocol="zookeeper"
 		address="192.168.159.148:2181" />
 	<!-- 使用dubbo协议在20880端口暴露服务 -->
-	<dubbo:protocol>
-		<dubbo:parameter key="dubbo" value="20880" />
-	</dubbo:protocol>
+	<dubbo:protocol name="dubbo" port="20880" />
 	<!-- 声明需要暴露的服务端口 -->
 	<dubbo:service
 		interface="com.huazai.b2c.aiyou.service.TDubboService"
-		ref="tDubboService" />
+		ref="tDubboServiceImpl" />
 
 </beans>
