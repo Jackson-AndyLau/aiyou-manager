@@ -18,6 +18,7 @@
 		<!-- 将所有的配置文件加载由 Spring 进行管理 -->
 		<param-value>classpath:spring/applicationContext-*.xml</param-value>
 	</context-param>
+	<!-- 配置监听 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
