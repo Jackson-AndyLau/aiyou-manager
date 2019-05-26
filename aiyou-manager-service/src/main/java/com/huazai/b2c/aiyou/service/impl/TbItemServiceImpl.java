@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huazai.b2c.aiyou.common.EasyUIDataGrid;
@@ -27,6 +28,7 @@ import com.huazai.b2c.aiyou.service.TbItemService;
  *
  * @version V1.0.0
  */
+@Service
 public class TbItemServiceImpl implements TbItemService
 {
 	@Autowired
@@ -40,7 +42,7 @@ public class TbItemServiceImpl implements TbItemService
 		// 设置查询条件获得查询结果
 		TbItemExample example = new TbItemExample();
 		Criteria criteria = example.createCriteria();
-		if (StringUtils.isEmpty(item) && item.getCid() != null)
+		if (!StringUtils.isEmpty(item) && item.getCid() != null)
 			criteria.andCidEqualTo(item.getCid());
 		List<TbItem> list = tbItemMapper.selectByExample(example);
 		// 获取分页信息

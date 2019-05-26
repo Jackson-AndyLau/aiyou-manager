@@ -1,5 +1,6 @@
 package com.huazai.b2c.aiyou.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,8 +16,13 @@ import java.util.Date;
  *
  * @version V1.0.0
  */
-public class TbItem
+public class TbItem implements Serializable
 {
+	/** 
+	 * @Files serialVersionUID : TODO 
+	 */  
+	private static final long serialVersionUID = 1L;
+
 	private Long id;
 
 	private String title;

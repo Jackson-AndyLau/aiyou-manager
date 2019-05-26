@@ -10,6 +10,24 @@
 	<artifactId>aiyou-manager-service</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
+		<!-- aiyou dao 依赖 -->
+		<dependency>
+			<groupId>com.huazai.b2c.aiyou</groupId>
+			<artifactId>aiyou-manager-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- aiyou interface 依赖 -->
+		<dependency>
+			<groupId>com.huazai.b2c.aiyou</groupId>
+			<artifactId>aiyou-manager-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- mybatis 分页插件 PageHelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- spring 相关 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -38,24 +56,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-		</dependency>
-		<!-- aiyou dao 依赖 -->
-		<dependency>
-			<groupId>com.huazai.b2c.aiyou</groupId>
-			<artifactId>aiyou-manager-dao</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<!-- aiyou interface 依赖 -->
-		<dependency>
-			<groupId>com.huazai.b2c.aiyou</groupId>
-			<artifactId>aiyou-manager-interface</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<!-- mybatis 分页插件 PageHelper -->
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>5.1.8</version>
 		</dependency>
 		<!-- dubbo 相关 -->
 		<dependency>
