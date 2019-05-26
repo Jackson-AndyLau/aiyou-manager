@@ -7,7 +7,7 @@ import java.util.Date;
  * @author HuaZai
  * @contact who.seek.me@java98k.vip
  *          <ul>
- * @description TODO
+ * @description 商品实体
  *              </ul>
  * @className TbItemParamItemMapper
  * @package com.huazai.b2c.aiyou.mapper

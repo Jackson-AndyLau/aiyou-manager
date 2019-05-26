@@ -51,6 +51,12 @@
 			<artifactId>aiyou-manager-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- mybatis 分页插件 PageHelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.1.8</version>
+		</dependency>
 		<!-- dubbo 相关 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
