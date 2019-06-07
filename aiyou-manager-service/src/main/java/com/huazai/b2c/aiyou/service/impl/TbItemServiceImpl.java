@@ -49,8 +49,11 @@ public class TbItemServiceImpl implements TbItemService
 		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
 		// 封装返回结果
 		EasyUIDataGrid resultData = new EasyUIDataGrid();
-		resultData.setList(list);
+		resultData.setRows(list);
 		resultData.setTotal(pageInfo.getTotal());
+		resultData.setPageSize(pageInfo.getPageSize());
+		resultData.setPageNum(pageInfo.getPageNum());
+		resultData.setPages(pageInfo.getPages());
 
 		return resultData;
 	}

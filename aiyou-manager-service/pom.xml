@@ -26,8 +26,12 @@
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- <dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.0.0</version>
+		</dependency> -->
 		<!-- spring 相关 -->
 		<dependency>
 			<groupId>org.springframework</groupId>

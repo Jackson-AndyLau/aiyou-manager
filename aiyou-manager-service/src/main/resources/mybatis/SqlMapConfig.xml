@@ -8,7 +8,19 @@
 		<plugin interceptor="com.github.pagehelper.PageHelper">
 			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库 -->
 			<property name="dialect" value="mysql" />
+			<property name="reasonable" value="true" />
+			<property name="rowBoundsWithCount" value="true" />
+			<property name="offsetAsPageNum" value="true" />
 		</plugin>
 	</plugins>
+	<!-- <plugins>
+		注意这里要写成PageInterceptor, 5.0之前的版本都是写PageHelper, 5.0之后要换成PageInterceptor
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<property name="helperDialect" value="mysql" />
+			<property name="reasonable" value="true" />
+			<property name="rowBoundsWithCount" value="true" />
+			<property name="offsetAsPageNum" value="true" />
+		</plugin>
+	</plugins> -->
 
 </configuration>
