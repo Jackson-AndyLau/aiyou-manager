@@ -1,6 +1,7 @@
 package com.huazai.b2c.aiyou.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
+
 import com.huazai.b2c.aiyou.common.EasyUIDataGrid;
 import com.huazai.b2c.aiyou.pojo.TbItemDesc;
 import com.huazai.b2c.aiyou.service.TbItemDescService;
@@ -25,7 +26,7 @@ public class TbItemDescServiceImpl implements TbItemDescService
 	@Override
 	public EasyUIDataGrid getItemDescList(Integer pageNum, Integer pageSize, TbItemDesc tbItemDesc)
 	{
-		
+
 		return null;
 	}
 

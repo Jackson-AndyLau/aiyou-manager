@@ -33,9 +33,9 @@
 	<!-- 声明需要暴露的服务端口 -->
 	<dubbo:service
 		interface="com.huazai.b2c.aiyou.service.TDubboService"
-		ref="tDubboServiceImpl" />
+		ref="tDubboServiceImpl" timeout="30000" />
 	<dubbo:service
 		interface="com.huazai.b2c.aiyou.service.TbItemService"
-		ref="tbItemServiceImpl" />
+		ref="tbItemServiceImpl" timeout="30000" />
 
 </beans>
