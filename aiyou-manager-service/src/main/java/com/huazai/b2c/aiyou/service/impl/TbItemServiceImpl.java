@@ -1,19 +1,26 @@
 package com.huazai.b2c.aiyou.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.huazai.b2c.aiyou.common.Constant;
 import com.huazai.b2c.aiyou.common.EasyUIDataGrid;
+import com.huazai.b2c.aiyou.mapper.TbItemDescMapper;
 import com.huazai.b2c.aiyou.mapper.TbItemMapper;
 import com.huazai.b2c.aiyou.pojo.TbItem;
+import com.huazai.b2c.aiyou.pojo.TbItemDesc;
 import com.huazai.b2c.aiyou.pojo.TbItemExample;
 import com.huazai.b2c.aiyou.pojo.TbItemExample.Criteria;
+import com.huazai.b2c.aiyou.repo.AiyouResultData;
 import com.huazai.b2c.aiyou.service.TbItemService;
+import com.huazai.b2c.aiyou.utils.IDUtils;
 
 /**
  * 
@@ -34,8 +41,11 @@ public class TbItemServiceImpl implements TbItemService
 	@Autowired
 	private TbItemMapper tbItemMapper;
 
+	@Autowired
+	private TbItemDescMapper tbItemDescMapper;
+
 	@Override
-	public EasyUIDataGrid getItemList(Integer pageNum, Integer pageSize, TbItem item)
+	public EasyUIDataGrid getTbItemList(Integer pageNum, Integer pageSize, TbItem item)
 	{
 		// 通过PageHelper设置分页信息
 		PageHelper.startPage(pageNum, pageSize);
@@ -56,6 +66,40 @@ public class TbItemServiceImpl implements TbItemService
 		resultData.setPages(pageInfo.getPages());
 
 		return resultData;
+	}
+
+	@Transactional
+	@Override
+	public AiyouResultData addTbItem(TbItem item, String itemDesc)
+	{
+		// 获取生成商品ID
+		long itemId = IDUtils.genItemId();
+		// 初始化系统时间
+		Date date = new Date();
+		// 补全商品信息
+		item.setId(itemId);
+		item.setStatus(Constant.TB_ITEM_STATUS_NORMAL);
+		item.setCreated(date);
+		item.setUpdated(date);
+		// 初始化 TbItemDesc 对象
+		TbItemDesc tbItemDesc = new TbItemDesc();
+		// 补全商品描述信息
+		tbItemDesc.setItemId(itemId);
+		tbItemDesc.setItemDesc(itemDesc);
+		tbItemDesc.setCreated(date);
+		tbItemDesc.setUpdated(date);
+		try
+		{
+			// 添加商品数据
+			tbItemMapper.insert(item);
+			// 添加商品描述
+			tbItemDescMapper.insert(tbItemDesc);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "添加商品失败");
+		}
+		return AiyouResultData.ok();
 	}
 
 }

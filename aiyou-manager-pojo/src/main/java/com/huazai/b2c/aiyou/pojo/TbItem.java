@@ -39,6 +39,9 @@ public class TbItem implements Serializable
 
 	private Long cid;
 
+	/**
+	 * 商品状态，1-正常，2-下架，3-删除
+	 */
 	private Byte status;
 
 	private Date created;
