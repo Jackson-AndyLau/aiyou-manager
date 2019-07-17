@@ -102,4 +102,23 @@ public class TbItemServiceImpl implements TbItemService
 		return AiyouResultData.ok();
 	}
 
+	@Transactional
+	@Override
+	public AiyouResultData deleteTbItem(List<Long> ids)
+	{
+		try
+		{
+			for (Long itemId : ids)
+			{
+				TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
+				tbItem.setStatus(Constant.TB_ITEM_STATUS_DELETE);
+				tbItemMapper.updateByPrimaryKey(tbItem);
+			}
+		} catch (Exception e)
+		{
+			AiyouResultData.build(-1, "删除异常");
+		}
+		return AiyouResultData.ok();
+	}
+
 }

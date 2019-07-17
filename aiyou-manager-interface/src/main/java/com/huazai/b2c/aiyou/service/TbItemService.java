@@ -1,5 +1,7 @@
 package com.huazai.b2c.aiyou.service;
 
+import java.util.List;
+
 import com.huazai.b2c.aiyou.common.EasyUIDataGrid;
 import com.huazai.b2c.aiyou.pojo.TbItem;
 import com.huazai.b2c.aiyou.repo.AiyouResultData;
@@ -58,5 +60,21 @@ public interface TbItemService
 	 * @version : V1.0.0
 	 */
 	public AiyouResultData addTbItem(TbItem item, String itemDesc);
+
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title deleteTbItem
+	 *        <ul>
+	 * @description 删除商品信息
+	 *              </ul>
+	 * @createdTime 2017年06月11日
+	 * @param ids 商品ID集合
+	 * @return AiyouResultData
+	 *
+	 * @version : V1.0.0
+	 */
+	public AiyouResultData deleteTbItem(List<Long> ids);
 
 }
