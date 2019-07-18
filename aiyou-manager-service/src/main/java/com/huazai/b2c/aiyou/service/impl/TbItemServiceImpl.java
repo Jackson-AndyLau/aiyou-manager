@@ -113,9 +113,9 @@ public class TbItemServiceImpl implements TbItemService
 	private void optByTbItemId(String ids, Byte status) throws Exception
 	{
 		String[] idStrings = ids.split(",");
-		for (String itemId : idStrings)
+		for (int i = 0; i < idStrings.length; i++)
 		{
-			TbItem tbItem = tbItemMapper.selectByPrimaryKey(Long.valueOf(itemId));
+			TbItem tbItem = tbItemMapper.selectByPrimaryKey(Long.valueOf(idStrings[i]));
 			tbItem.setStatus(status);
 			tbItemMapper.updateByPrimaryKey(tbItem);
 		}
