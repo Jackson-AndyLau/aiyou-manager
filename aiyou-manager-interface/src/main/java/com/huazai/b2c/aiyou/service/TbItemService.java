@@ -127,4 +127,23 @@ public interface TbItemService
 	 */
 	public AiyouResultData findTbItemById(Long itemId);
 
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title updateTbItem
+	 *        <ul>
+	 * @description 修改商品信息
+	 *              </ul>
+	 * @createdTime 2017年06月11日
+	 * @param item
+	 *            商品信息实体
+	 * @param desc
+	 *            商品描述
+	 * @return AiyouResultData 数据载体
+	 *
+	 * @version : V1.0.0
+	 */
+	public AiyouResultData updateTbItem(TbItem item, String desc);
+
 }

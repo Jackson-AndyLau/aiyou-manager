@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huazai.b2c.aiyou.common.Constant;
@@ -177,6 +177,24 @@ public class TbItemServiceImpl implements TbItemService
 			return AiyouResultData.build(-1, "商品信息查询异常");
 		}
 		return AiyouResultData.ok(tbItem);
+	}
+
+	@Transactional
+	@Override
+	public AiyouResultData updateTbItem(TbItem item, String desc)
+	{
+		try
+		{
+			tbItemMapper.updateByPrimaryKey(item);
+			TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(item.getId());
+			tbItemDesc.setItemDesc(desc);
+			tbItemDescMapper.updateByPrimaryKey(tbItemDesc);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "修改商品信息异常");
+		}
+		return AiyouResultData.ok();
 	}
 
 }

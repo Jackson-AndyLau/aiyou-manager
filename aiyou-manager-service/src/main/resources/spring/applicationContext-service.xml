@@ -37,6 +37,9 @@
 		interface="com.huazai.b2c.aiyou.service.TbItemService"
 		ref="tbItemServiceImpl" timeout="30000" />
 	<dubbo:service
+		interface="com.huazai.b2c.aiyou.service.TbItemDescService"
+		ref="tbItemDescServiceImpl" timeout="30000" />
+	<dubbo:service
 		interface="com.huazai.b2c.aiyou.service.TbItemCatService"
 		ref="tbItemCatServiceImpl" timeout="30000" />
 
