@@ -1,9 +1,16 @@
 package com.huazai.b2c.aiyou.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.huazai.b2c.aiyou.common.EasyUIDataGrid;
+import com.huazai.b2c.aiyou.mapper.TbItemDescMapper;
 import com.huazai.b2c.aiyou.pojo.TbItemDesc;
+import com.huazai.b2c.aiyou.pojo.TbItemDescExample;
+import com.huazai.b2c.aiyou.pojo.TbItemDescExample.Criteria;
+import com.huazai.b2c.aiyou.repo.AiyouResultData;
 import com.huazai.b2c.aiyou.service.TbItemDescService;
 
 /**
@@ -23,11 +30,33 @@ import com.huazai.b2c.aiyou.service.TbItemDescService;
 public class TbItemDescServiceImpl implements TbItemDescService
 {
 
+	@Autowired
+	private TbItemDescMapper tbItemDescMapper;
+
 	@Override
 	public EasyUIDataGrid getItemDescList(Integer pageNum, Integer pageSize, TbItemDesc tbItemDesc)
 	{
 
 		return null;
+	}
+
+	@Override
+	public AiyouResultData findTbItemDescById(long itemId)
+	{
+		String itemDesc;
+		try
+		{
+			TbItemDescExample example = new TbItemDescExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andItemIdEqualTo(itemId);
+			List<TbItemDesc> list = tbItemDescMapper.selectByExample(example);
+			itemDesc = list.get(0).getItemDesc();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "商品描述查询异常");
+		}
+		return AiyouResultData.ok(itemDesc);
 	}
 
 }

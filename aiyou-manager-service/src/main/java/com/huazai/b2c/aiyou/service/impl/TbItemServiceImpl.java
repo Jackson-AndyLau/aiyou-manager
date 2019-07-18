@@ -47,24 +47,31 @@ public class TbItemServiceImpl implements TbItemService
 	@Override
 	public EasyUIDataGrid getTbItemList(Integer pageNum, Integer pageSize, TbItem item)
 	{
-		// 通过PageHelper设置分页信息
-		PageHelper.startPage(pageNum, pageSize);
-		// 设置查询条件获得查询结果
-		TbItemExample example = new TbItemExample();
-		Criteria criteria = example.createCriteria();
-		if (!StringUtils.isEmpty(item) && item.getCid() != null)
-			criteria.andCidEqualTo(item.getCid());
-		List<TbItem> list = tbItemMapper.selectByExample(example);
-		// 获取分页信息
-		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
-		// 封装返回结果
+		// 初始化数据载体
 		EasyUIDataGrid resultData = new EasyUIDataGrid();
-		resultData.setRows(list);
-		resultData.setTotal(pageInfo.getTotal());
-		resultData.setPageSize(pageInfo.getPageSize());
-		resultData.setPageNum(pageInfo.getPageNum());
-		resultData.setPages(pageInfo.getPages());
-
+		try
+		{
+			// 通过PageHelper设置分页信息
+			PageHelper.startPage(pageNum, pageSize);
+			// 设置查询条件获得查询结果
+			TbItemExample example = new TbItemExample();
+			Criteria criteria = example.createCriteria();
+			if (!StringUtils.isEmpty(item) && item.getCid() != null)
+				criteria.andCidEqualTo(item.getCid());
+			criteria.andStatusNotEqualTo(Byte.valueOf("3"));
+			List<TbItem> list = tbItemMapper.selectByExample(example);
+			// 获取分页信息
+			PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+			// 封装数据
+			resultData.setRows(list);
+			resultData.setTotal(pageInfo.getTotal());
+			resultData.setPageSize(pageInfo.getPageSize());
+			resultData.setPageNum(pageInfo.getPageNum());
+			resultData.setPages(pageInfo.getPages());
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		return resultData;
 	}
 
@@ -78,7 +85,7 @@ public class TbItemServiceImpl implements TbItemService
 		Date date = new Date();
 		// 补全商品信息
 		item.setId(itemId);
-		item.setStatus(Constant.TB_ITEM_STATUS_NORMAL);
+		item.setStatus(Constant.TB_ITEM_STATUS_RESHELF);
 		item.setCreated(date);
 		item.setUpdated(date);
 		// 初始化 TbItemDesc 对象
@@ -103,22 +110,73 @@ public class TbItemServiceImpl implements TbItemService
 	}
 
 	@Transactional
+	private void optByTbItemId(String ids, Byte status) throws Exception
+	{
+		String[] idStrings = ids.split(",");
+		for (String itemId : idStrings)
+		{
+			TbItem tbItem = tbItemMapper.selectByPrimaryKey(Long.valueOf(itemId));
+			tbItem.setStatus(status);
+			tbItemMapper.updateByPrimaryKey(tbItem);
+		}
+	}
+
+	@Transactional
 	@Override
-	public AiyouResultData deleteTbItem(List<Long> ids)
+	public AiyouResultData deleteTbItem(String ids)
 	{
 		try
 		{
-			for (Long itemId : ids)
-			{
-				TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
-				tbItem.setStatus(Constant.TB_ITEM_STATUS_DELETE);
-				tbItemMapper.updateByPrimaryKey(tbItem);
-			}
+			optByTbItemId(ids, Constant.TB_ITEM_STATUS_DELETE);
 		} catch (Exception e)
 		{
-			AiyouResultData.build(-1, "删除异常");
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "商品删除异常");
 		}
 		return AiyouResultData.ok();
+	}
+
+	@Override
+	public AiyouResultData instockTbItem(String ids)
+	{
+		try
+		{
+			optByTbItemId(ids, Constant.TB_ITEM_STATUS_INSTOCK);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "商品下架异常");
+		}
+		return AiyouResultData.ok();
+	}
+
+	@Override
+	public AiyouResultData reshelfTbItem(String ids)
+	{
+		try
+		{
+			optByTbItemId(ids, Constant.TB_ITEM_STATUS_RESHELF);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "商品上架异常");
+		}
+		return AiyouResultData.ok();
+	}
+
+	@Override
+	public AiyouResultData findTbItemById(Long itemId)
+	{
+		TbItem tbItem;
+		try
+		{
+			tbItem = tbItemMapper.selectByPrimaryKey(itemId);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return AiyouResultData.build(-1, "商品信息查询异常");
+		}
+		return AiyouResultData.ok(tbItem);
 	}
 
 }

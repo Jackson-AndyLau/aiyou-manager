@@ -1,7 +1,5 @@
 package com.huazai.b2c.aiyou.service;
 
-import java.util.List;
-
 import com.huazai.b2c.aiyou.common.EasyUIDataGrid;
 import com.huazai.b2c.aiyou.pojo.TbItem;
 import com.huazai.b2c.aiyou.repo.AiyouResultData;
@@ -70,11 +68,63 @@ public interface TbItemService
 	 * @description 删除商品信息
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param ids 商品ID集合
+	 * @param ids
+	 *            商品ID集合
 	 * @return AiyouResultData
 	 *
 	 * @version : V1.0.0
 	 */
-	public AiyouResultData deleteTbItem(List<Long> ids);
+	public AiyouResultData deleteTbItem(String ids);
+
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title instockTbItem
+	 *        <ul>
+	 * @description 下架商品
+	 *              </ul>
+	 * @createdTime 2017年06月11日
+	 * @param ids
+	 *            商品ID集合
+	 * @return AiyouResultData
+	 *
+	 * @version : V1.0.0
+	 */
+	public AiyouResultData instockTbItem(String ids);
+
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title reshelfTbItem
+	 *        <ul>
+	 * @description 上架商品
+	 *              </ul>
+	 * @createdTime 2017年06月11日
+	 * @param ids
+	 *            商品ID集合
+	 * @return AiyouResultData
+	 *
+	 * @version : V1.0.0
+	 */
+	public AiyouResultData reshelfTbItem(String ids);
+
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title findTbItemById
+	 *        <ul>
+	 * @description 根据商品ID获取商品信息
+	 *              </ul>
+	 * @createdTime 2017年06月11日
+	 * @param itemId
+	 *            商品ID
+	 * @return AiyouResultData
+	 *
+	 * @version : V1.0.0
+	 */
+	public AiyouResultData findTbItemById(Long itemId);
 
 }
