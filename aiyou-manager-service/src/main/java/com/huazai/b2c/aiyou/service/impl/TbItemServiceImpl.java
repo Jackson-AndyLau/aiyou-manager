@@ -98,9 +98,9 @@ public class TbItemServiceImpl implements TbItemService
 		try
 		{
 			// 添加商品数据
-			tbItemMapper.insert(item);
+			tbItemMapper.insertSelective(item);
 			// 添加商品描述
-			tbItemDescMapper.insert(tbItemDesc);
+			tbItemDescMapper.insertSelective(tbItemDesc);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
