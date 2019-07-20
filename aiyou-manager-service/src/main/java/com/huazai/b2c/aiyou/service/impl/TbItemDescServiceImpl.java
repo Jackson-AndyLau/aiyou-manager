@@ -43,14 +43,14 @@ public class TbItemDescServiceImpl implements TbItemDescService
 	@Override
 	public AiyouResultData findTbItemDescById(long itemId)
 	{
-		String itemDesc;
+		TbItemDesc itemDesc;
 		try
 		{
 			TbItemDescExample example = new TbItemDescExample();
 			Criteria criteria = example.createCriteria();
 			criteria.andItemIdEqualTo(itemId);
-			List<TbItemDesc> list = tbItemDescMapper.selectByExample(example);
-			itemDesc = list.get(0).getItemDesc();
+			List<TbItemDesc> list = tbItemDescMapper.selectByExampleWithBLOBs(example);
+			itemDesc = list.get(0);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
