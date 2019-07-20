@@ -185,10 +185,25 @@ public class TbItemServiceImpl implements TbItemService
 	{
 		try
 		{
-			tbItemMapper.updateByPrimaryKey(item);
+			// 修改商品信息
+			TbItem tbItem = tbItemMapper.selectByPrimaryKey(item.getId());
+			// 补全信息
+			Date date = new Date();
+			tbItem.setCid(item.getCid());
+			tbItem.setTitle(item.getTitle());
+			tbItem.setSellPoint(item.getSellPoint());
+			tbItem.setPrice(item.getPrice());
+			tbItem.setNum(item.getNum());
+			tbItem.setBarcode(item.getBarcode());
+			tbItem.setImage(item.getImage());
+			tbItem.setUpdated(date);
+			tbItemMapper.updateByPrimaryKey(tbItem);
+			// 修改商品描述
 			TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(item.getId());
+			// 补全信息
 			tbItemDesc.setItemDesc(desc);
-			tbItemDescMapper.updateByPrimaryKey(tbItemDesc);
+			tbItemDesc.setUpdated(date);
+			tbItemDescMapper.updateByPrimaryKeyWithBLOBs(tbItemDesc);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
