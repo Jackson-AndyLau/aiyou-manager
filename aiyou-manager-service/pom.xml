@@ -27,11 +27,8 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>5.0.0</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>com.github.pagehelper</groupId> <artifactId>pagehelper</artifactId> 
+			<version>5.0.0</version> </dependency> -->
 		<!-- spring 相关 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -60,6 +57,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<!-- Redis 客户端 -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
 		</dependency>
 		<!-- dubbo 相关 -->
 		<dependency>

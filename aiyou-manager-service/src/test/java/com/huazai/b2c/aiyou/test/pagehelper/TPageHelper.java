@@ -1,4 +1,4 @@
-package com.huazai.b2c.aiyou.pagehelper;
+package com.huazai.b2c.aiyou.test.pagehelper;
 
 import java.util.List;
 
