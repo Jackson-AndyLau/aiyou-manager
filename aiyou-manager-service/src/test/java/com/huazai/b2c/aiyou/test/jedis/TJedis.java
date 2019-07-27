@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.huazai.b2c.aiyou.service.TJedisClientService;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
@@ -112,5 +116,30 @@ public class TJedis
 		System.out.println(address);
 		// 注意：每次操作完成后需要关闭连接
 		jedisCluster.close();
+	}
+
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title testJedisClientConfig
+	 *        <ul>
+	 * @description 测试Jedis配置/接口类
+	 *              </ul>
+	 * @createdTime 2017年06月14日
+	 * @return void
+	 *
+	 * @version : V1.0.0
+	 */
+	@Test
+	public void testJedisClientConfig()
+	{
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+				"classpath:spring/applicationContext-*.xml");
+		TJedisClientService clientService = applicationContext.getBean(TJedisClientService.class);
+		String str = clientService.set("money", "1000000");
+		System.out.println("set str : " + str);
+		String result = clientService.get("money");
+		System.out.println("get result : " + result);
 	}
 }
