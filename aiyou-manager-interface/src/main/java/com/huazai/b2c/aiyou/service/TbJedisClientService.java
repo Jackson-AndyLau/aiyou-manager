@@ -13,7 +13,7 @@ package com.huazai.b2c.aiyou.service;
  *
  * @version V1.0.0
  */
-public interface TJedisClientService
+public interface TbJedisClientService
 {
 
 	/**

@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.huazai.b2c.aiyou.service.TJedisClientService;
+import com.huazai.b2c.aiyou.service.TbJedisClientService;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
@@ -136,7 +136,7 @@ public class TJedis
 	{
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
 				"classpath:spring/applicationContext-*.xml");
-		TJedisClientService clientService = applicationContext.getBean(TJedisClientService.class);
+		TbJedisClientService clientService = applicationContext.getBean(TbJedisClientService.class);
 		String str = clientService.set("money", "1000000");
 		System.out.println("set str : " + str);
 		String result = clientService.get("money");

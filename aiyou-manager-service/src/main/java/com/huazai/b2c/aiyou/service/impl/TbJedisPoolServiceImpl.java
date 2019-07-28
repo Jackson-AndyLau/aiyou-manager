@@ -2,7 +2,7 @@ package com.huazai.b2c.aiyou.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.huazai.b2c.aiyou.service.TJedisClientService;
+import com.huazai.b2c.aiyou.service.TbJedisClientService;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -20,7 +20,7 @@ import redis.clients.jedis.JedisPool;
  *
  * @version V1.0.0
  */
-public class TJedisPoolServiceImpl implements TJedisClientService
+public class TbJedisPoolServiceImpl implements TbJedisClientService
 {
 
 	@Autowired

@@ -13,7 +13,7 @@ package com.huazai.b2c.aiyou.service;
  *
  * @version V1.0.0
  */
-public interface TDubboService
+public interface TbDubboService
 {
 
 	public String getLocalDate();

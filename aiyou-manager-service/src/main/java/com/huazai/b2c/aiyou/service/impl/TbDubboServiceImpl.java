@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.huazai.b2c.aiyou.mapper.TDubboMapper;
-import com.huazai.b2c.aiyou.service.TDubboService;
+import com.huazai.b2c.aiyou.service.TbDubboService;
 
 /**
  * 
@@ -20,7 +20,7 @@ import com.huazai.b2c.aiyou.service.TDubboService;
  * @version V1.0.0
  */
 @Service
-public class TDubboServiceImpl implements TDubboService
+public class TbDubboServiceImpl implements TbDubboService
 {
 	@Autowired
 	private TDubboMapper tDubboMapper;
