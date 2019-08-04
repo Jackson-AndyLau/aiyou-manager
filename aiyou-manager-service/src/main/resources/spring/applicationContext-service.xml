@@ -15,7 +15,7 @@
 	<!-- 配置service扫描包 -->
 	<context:component-scan
 		base-package="com.huazai.b2c.aiyou.service" />
-		
+
 	<!-- 加载配置文件配置 -->
 	<context:property-placeholder
 		location="classpath:/resource/*.properties" />
@@ -28,15 +28,14 @@
 	<!-- 使用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20880" />
 
-
 	<bean id="tbDubboServiceImpl"
-		class="com.huazai.b2c.aiyou.service.impl.TbDubboServiceImpl"></bean>
+		class="com.huazai.b2c.aiyou.service.impl.TbDubboServiceImpl" />
 	<bean id="tbItemServiceImpl"
-		class="com.huazai.b2c.aiyou.service.impl.TbItemServiceImpl"></bean>
+		class="com.huazai.b2c.aiyou.service.impl.TbItemServiceImpl" />
 	<!-- 声明需要暴露的服务端口 -->
 	<dubbo:service
-		interface="com.huazai.b2c.aiyou.service.TDubboService"
-		ref="tDubboServiceImpl" timeout="30000" />
+		interface="com.huazai.b2c.aiyou.service.TbDubboService"
+		ref="tbDubboServiceImpl" timeout="30000" />
 	<dubbo:service
 		interface="com.huazai.b2c.aiyou.service.TbItemService"
 		ref="tbItemServiceImpl" timeout="30000" />

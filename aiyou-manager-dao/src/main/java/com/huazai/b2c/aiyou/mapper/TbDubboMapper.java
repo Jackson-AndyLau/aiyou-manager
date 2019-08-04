@@ -13,7 +13,7 @@ package com.huazai.b2c.aiyou.mapper;
  *
  * @version V1.0.0
  */
-public interface TDubboMapper
+public interface TbDubboMapper
 {
 
 	public String getLocalDate();
