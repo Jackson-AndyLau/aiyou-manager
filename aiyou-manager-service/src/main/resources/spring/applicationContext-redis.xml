@@ -13,7 +13,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 	<!-- 配置Jedis单机版连接（注意：单机版和集群版不能共存） -->
 	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-		<constructor-arg name="host" value="192.168.159.144" />
+		<constructor-arg name="host" value="192.168.182.182" />
 		<constructor-arg name="port" value="6379" />
 	</bean>
 	<bean id="tbJedisPoolServiceImpl"
