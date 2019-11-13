@@ -3,7 +3,16 @@ package com.huazai.b2c.aiyou.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -44,6 +53,12 @@ public class TbItemServiceImpl implements TbItemService
 	@Autowired
 	private TbItemDescMapper tbItemDescMapper;
 
+	@Autowired
+	private JmsTemplate jmsTemplate;
+
+	@Resource(name = "itemTopicDestination")
+	private Destination itemTopicDestination;
+
 	@Override
 	public EasyUIDataGrid getTbItemList(Integer pageNum, Integer pageSize, TbItem item)
 	{
@@ -80,7 +95,7 @@ public class TbItemServiceImpl implements TbItemService
 	public AiyouResultData addTbItem(TbItem item, String itemDesc)
 	{
 		// 获取生成商品ID
-		long itemId = IDUtils.genItemId();
+		final long itemId = IDUtils.genItemId();
 		// 初始化系统时间
 		Date date = new Date();
 		// 补全商品信息
@@ -101,6 +116,16 @@ public class TbItemServiceImpl implements TbItemService
 			tbItemMapper.insertSelective(item);
 			// 添加商品描述
 			tbItemDescMapper.insertSelective(tbItemDesc);
+			// 同步更新索引库
+			jmsTemplate.send(itemTopicDestination, new MessageCreator()
+			{
+				@Override
+				public Message createMessage(Session session) throws JMSException
+				{
+					TextMessage textMessage = session.createTextMessage(String.valueOf(String.valueOf(itemId)));
+					return textMessage;
+				}
+			});
 		} catch (Exception e)
 		{
 			e.printStackTrace();
