@@ -140,9 +140,12 @@ public class TbItemServiceImpl implements TbItemService
 		String[] idStrings = ids.split(",");
 		for (int i = 0; i < idStrings.length; i++)
 		{
+			// 在一般的实际应用中，都是进行的是逻辑操作
 			TbItem tbItem = tbItemMapper.selectByPrimaryKey(Long.valueOf(idStrings[i]));
 			tbItem.setStatus(status);
 			tbItemMapper.updateByPrimaryKey(tbItem);
+			// 同步更新索引库
+			
 		}
 	}
 
@@ -229,6 +232,8 @@ public class TbItemServiceImpl implements TbItemService
 			tbItemDesc.setItemDesc(desc);
 			tbItemDesc.setUpdated(date);
 			tbItemDescMapper.updateByPrimaryKeyWithBLOBs(tbItemDesc);
+			// 同步更新索引库
+			
 		} catch (Exception e)
 		{
 			e.printStackTrace();
