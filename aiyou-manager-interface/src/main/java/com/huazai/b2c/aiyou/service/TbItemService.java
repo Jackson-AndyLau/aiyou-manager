@@ -17,8 +17,7 @@ import com.huazai.b2c.aiyou.repo.AiyouResultData;
  *
  * @version V1.0.0
  */
-public interface TbItemService
-{
+public interface TbItemService {
 	/**
 	 * 
 	 * @author HuaZai
@@ -28,12 +27,9 @@ public interface TbItemService
 	 * @description 获取商品列表
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param pageNum
-	 *            当前页码
-	 * @param pageSize
-	 *            页大小
-	 * @param item
-	 *            查询条件
+	 * @param pageNum  当前页码
+	 * @param pageSize 页大小
+	 * @param item     查询条件
 	 * @return EasyUIDataGrid 返回数据载体
 	 *
 	 * @version : V1.0.0
@@ -49,10 +45,8 @@ public interface TbItemService
 	 * @description 添加商品
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param item
-	 *            商品实体
-	 * @param desc
-	 *            商品描述
+	 * @param item 商品实体
+	 * @param desc 商品描述
 	 * @return AiyouResultData 相应数据载体
 	 *
 	 * @version : V1.0.0
@@ -68,8 +62,7 @@ public interface TbItemService
 	 * @description 删除商品信息
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param ids
-	 *            商品ID集合
+	 * @param ids 商品ID集合
 	 * @return AiyouResultData
 	 *
 	 * @version : V1.0.0
@@ -85,8 +78,7 @@ public interface TbItemService
 	 * @description 下架商品
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param ids
-	 *            商品ID集合
+	 * @param ids 商品ID集合
 	 * @return AiyouResultData
 	 *
 	 * @version : V1.0.0
@@ -102,8 +94,7 @@ public interface TbItemService
 	 * @description 上架商品
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param ids
-	 *            商品ID集合
+	 * @param ids 商品ID集合
 	 * @return AiyouResultData
 	 *
 	 * @version : V1.0.0
@@ -119,8 +110,7 @@ public interface TbItemService
 	 * @description 根据商品ID获取商品信息
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param itemId
-	 *            商品ID
+	 * @param itemId 商品ID
 	 * @return AiyouResultData
 	 *
 	 * @version : V1.0.0
@@ -136,14 +126,29 @@ public interface TbItemService
 	 * @description 修改商品信息
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param item
-	 *            商品信息实体
-	 * @param desc
-	 *            商品描述
+	 * @param item 商品信息实体
+	 * @param desc 商品描述
 	 * @return AiyouResultData 数据载体
 	 *
 	 * @version : V1.0.0
 	 */
 	public AiyouResultData updateTbItem(TbItem item, String desc);
+
+	/**
+	 * 
+	 * @author HuaZai
+	 * @contact who.seek.me@java98k.vip
+	 * @title getTbItemById
+	 *        <ul>
+	 * @description 根据商品Id，查询商品详情
+	 *              </ul>
+	 * @createdTime 2017年06月18日
+	 * @param itemId
+	 * @return
+	 * @return TbItem
+	 *
+	 * @version : V1.0.0
+	 */
+	public TbItem getTbItemById(Long itemId);
 
 }

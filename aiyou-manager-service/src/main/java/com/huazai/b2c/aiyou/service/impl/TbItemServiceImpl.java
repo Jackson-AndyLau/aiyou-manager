@@ -242,4 +242,10 @@ public class TbItemServiceImpl implements TbItemService
 		return AiyouResultData.ok();
 	}
 
+	@Override
+	public TbItem getTbItemById(Long itemId) {
+		TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
+		return tbItem;
+	}
+
 }

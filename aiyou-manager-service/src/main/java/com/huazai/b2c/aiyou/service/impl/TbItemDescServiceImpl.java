@@ -59,4 +59,10 @@ public class TbItemDescServiceImpl implements TbItemDescService
 		return AiyouResultData.ok(itemDesc);
 	}
 
+	@Override
+	public TbItemDesc geTbItemDescById(Long itemId) {
+		TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(itemId);
+		return tbItemDesc;
+	}
+
 }
