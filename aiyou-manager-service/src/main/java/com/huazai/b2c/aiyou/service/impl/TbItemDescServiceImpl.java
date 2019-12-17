@@ -43,8 +43,8 @@ public class TbItemDescServiceImpl implements TbItemDescService
 	@Value("${TB_ITEM_INFO_KEY}")
 	private String TB_ITEM_INFO_KEY;
 	
-	@Value("${ITEM_INFO_KEY_EXPIRE}")
-	private Integer ITEM_INFO_KEY_EXPIRE;
+	@Value("${TB_ITEM_INFO_KEY_EXPIRE}")
+	private Integer TB_ITEM_INFO_KEY_EXPIRE;
 
 	@Override
 	public EasyUIDataGrid getItemDescList(Integer pageNum, Integer pageSize, TbItemDesc tbItemDesc)
@@ -84,7 +84,7 @@ public class TbItemDescServiceImpl implements TbItemDescService
 				if (!StringUtils.isEmpty(str))
 				{
 					// 重置数据的有效时间
-					tbJedisClientService.expire(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", ITEM_INFO_KEY_EXPIRE);
+					tbJedisClientService.expire(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", TB_ITEM_INFO_KEY_EXPIRE);
 					// 解析数据并返回
 					TbItemDesc tbItemDesc = JsonUtils.jsonToPojo(str, TbItemDesc.class);
 					return tbItemDesc;
@@ -100,7 +100,7 @@ public class TbItemDescServiceImpl implements TbItemDescService
 			// 新增缓存
 			tbJedisClientService.set(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", JsonUtils.objectToJson(tbItemDesc));
 			// 设置过期时间
-			tbJedisClientService.expire(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", ITEM_INFO_KEY_EXPIRE);
+			tbJedisClientService.expire(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", TB_ITEM_INFO_KEY_EXPIRE);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
