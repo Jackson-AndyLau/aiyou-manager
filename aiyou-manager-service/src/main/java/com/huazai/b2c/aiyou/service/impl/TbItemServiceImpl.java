@@ -11,6 +11,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,9 @@ import com.huazai.b2c.aiyou.pojo.TbItemExample;
 import com.huazai.b2c.aiyou.pojo.TbItemExample.Criteria;
 import com.huazai.b2c.aiyou.repo.AiyouResultData;
 import com.huazai.b2c.aiyou.service.TbItemService;
+import com.huazai.b2c.aiyou.service.TbJedisClientService;
 import com.huazai.b2c.aiyou.utils.IDUtils;
+import com.huazai.b2c.aiyou.utils.JsonUtils;
 
 /**
  * 
@@ -56,8 +59,17 @@ public class TbItemServiceImpl implements TbItemService
 	@Autowired
 	private JmsTemplate jmsTemplate;
 
+	@Autowired
+	private TbJedisClientService tbJedisClientService;
+
 	@Resource(name = "itemTopicDestination")
 	private Destination itemTopicDestination;
+
+	@Value("${TB_ITEM_INFO_KEY}")
+	private String TB_ITEM_INFO_KEY;
+
+	@Value("${ITEM_INFO_KEY_EXPIRE}")
+	private Integer ITEM_INFO_KEY_EXPIRE;
 
 	@Override
 	public EasyUIDataGrid getTbItemList(Integer pageNum, Integer pageSize, TbItem item)
@@ -145,7 +157,7 @@ public class TbItemServiceImpl implements TbItemService
 			tbItem.setStatus(status);
 			tbItemMapper.updateByPrimaryKey(tbItem);
 			// 同步更新索引库
-			
+
 		}
 	}
 
@@ -233,7 +245,7 @@ public class TbItemServiceImpl implements TbItemService
 			tbItemDesc.setUpdated(date);
 			tbItemDescMapper.updateByPrimaryKeyWithBLOBs(tbItemDesc);
 			// 同步更新索引库
-			
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -243,8 +255,40 @@ public class TbItemServiceImpl implements TbItemService
 	}
 
 	@Override
-	public TbItem getTbItemById(Long itemId) {
+	public TbItem getTbItemById(Long itemId)
+	{
+		try
+		{
+			// 从缓存中获取数据
+			if (itemId != null)
+			{
+				// 获取数据
+				String str = tbJedisClientService.get(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE");
+				if (!StringUtils.isEmpty(str))
+				{
+					// 重置数据的有效时间
+					tbJedisClientService.expire(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", ITEM_INFO_KEY_EXPIRE);
+					// 解析数据并返回
+					TbItem tbItemCache = JsonUtils.jsonToPojo(str, TbItem.class);
+					return tbItemCache;
+				}
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		// 从数据库中获取数据
 		TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
+		try
+		{
+			// 新增缓存
+			tbJedisClientService.set(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", JsonUtils.objectToJson(tbItem));
+			// 设置过期时间
+			tbJedisClientService.expire(TB_ITEM_INFO_KEY + ":" + itemId + ":BASE", ITEM_INFO_KEY_EXPIRE);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		return tbItem;
 	}
 

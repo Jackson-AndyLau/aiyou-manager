@@ -1,6 +1,6 @@
 package com.huazai.b2c.aiyou.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 
 import com.huazai.b2c.aiyou.service.TbJedisClientService;
 
@@ -23,7 +23,7 @@ import redis.clients.jedis.JedisPool;
 public class TbJedisPoolServiceImpl implements TbJedisClientService
 {
 
-	@Autowired
+	@Resource(name = "jedisPool")
 	private JedisPool jedisPool;
 
 	@Override
