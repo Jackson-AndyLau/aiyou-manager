@@ -7,7 +7,7 @@
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.huazai.b2c.aiyou.pojo.TbItemParamItem">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.huazai.aiyou.manager.pojo.TbItemParamItem">
     <result column="param_data" jdbcType="LONGVARCHAR" property="paramData" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -74,7 +74,7 @@
   <sql id="Blob_Column_List">
     param_data
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItemExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItemExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -90,7 +90,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItemExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -116,19 +116,19 @@
     delete from tb_item_param_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItemExample">
+  <delete id="deleteByExample" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItemExample">
     delete from tb_item_param_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItem">
+  <insert id="insert" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItem">
     insert into tb_item_param_item (id, item_id, created, 
       updated, param_data)
     values (#{id,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP}, #{paramData,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItem">
+  <insert id="insertSelective" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItem">
     insert into tb_item_param_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItemExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItemExample" resultType="java.lang.Integer">
     select count(*) from tb_item_param_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -215,7 +215,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItem">
+  <update id="updateByPrimaryKeySelective" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItem">
     update tb_item_param_item
     <set>
       <if test="itemId != null">
@@ -233,7 +233,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItem">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItem">
     update tb_item_param_item
     set item_id = #{itemId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
@@ -241,7 +241,7 @@
       param_data = #{paramData,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.huazai.b2c.aiyou.pojo.TbItemParamItem">
+  <update id="updateByPrimaryKey" parameterType="com.huazai.aiyou.manager.pojo.TbItemParamItem">
     update tb_item_param_item
     set item_id = #{itemId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},

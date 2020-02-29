@@ -1,7 +1,6 @@
 package com.huazai.aiyou.manager.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.huazai.aiyou.manager.service.TbJedisClientService;
 
@@ -20,7 +19,6 @@ import redis.clients.jedis.JedisCluster;
  *
  * @version V1.0.0
  */
-@Service
 public class TbJedisClusterServiceImpl implements TbJedisClientService
 {
 

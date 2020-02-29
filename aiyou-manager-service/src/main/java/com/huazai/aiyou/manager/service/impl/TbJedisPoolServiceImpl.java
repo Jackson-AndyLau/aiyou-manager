@@ -2,8 +2,6 @@ package com.huazai.aiyou.manager.service.impl;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
-
 import com.huazai.aiyou.manager.service.TbJedisClientService;
 
 import redis.clients.jedis.Jedis;
@@ -22,7 +20,6 @@ import redis.clients.jedis.JedisPool;
  *
  * @version V1.0.0
  */
-@Service
 public class TbJedisPoolServiceImpl implements TbJedisClientService
 {
 
