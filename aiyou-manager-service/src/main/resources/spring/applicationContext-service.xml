@@ -14,7 +14,7 @@
 
 	<!-- 配置service扫描包 -->
 	<context:component-scan
-		base-package="com.huazai.b2c.aiyou.service" />
+		base-package="com.huazai.aiyou.manager.service" />
 
 	<!-- 加载配置文件配置 -->
 	<context:property-placeholder
@@ -29,21 +29,21 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 
 	<bean id="tbDubboServiceImpl"
-		class="com.huazai.b2c.aiyou.service.impl.TbDubboServiceImpl" />
+		class="com.huazai.aiyou.manager.service.impl.TbDubboServiceImpl" />
 	<bean id="tbItemServiceImpl"
-		class="com.huazai.b2c.aiyou.service.impl.TbItemServiceImpl" />
+		class="com.huazai.aiyou.manager.service.impl.TbItemServiceImpl" />
 	<!-- 声明需要暴露的服务端口 -->
 	<dubbo:service
-		interface="com.huazai.b2c.aiyou.service.TbDubboService"
+		interface="com.huazai.aiyou.manager.service.TbDubboService"
 		ref="tbDubboServiceImpl" timeout="30000" />
 	<dubbo:service
-		interface="com.huazai.b2c.aiyou.service.TbItemService"
+		interface="com.huazai.aiyou.manager.service.TbItemService"
 		ref="tbItemServiceImpl" timeout="30000" />
 	<dubbo:service
-		interface="com.huazai.b2c.aiyou.service.TbItemDescService"
+		interface="com.huazai.aiyou.manager.service.TbItemDescService"
 		ref="tbItemDescServiceImpl" timeout="30000" />
 	<dubbo:service
-		interface="com.huazai.b2c.aiyou.service.TbItemCatService"
+		interface="com.huazai.aiyou.manager.service.TbItemCatService"
 		ref="tbItemCatServiceImpl" timeout="30000" />
 
 </beans>

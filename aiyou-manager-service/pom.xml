@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.huazai.b2c.aiyou</groupId>
+		<groupId>com.huazai.aiyou.manager</groupId>
 		<artifactId>aiyou-manager</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -12,13 +12,13 @@
 	<dependencies>
 		<!-- aiyou dao 依赖 -->
 		<dependency>
-			<groupId>com.huazai.b2c.aiyou</groupId>
+			<groupId>com.huazai.aiyou.manager</groupId>
 			<artifactId>aiyou-manager-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- aiyou interface 依赖 -->
 		<dependency>
-			<groupId>com.huazai.b2c.aiyou</groupId>
+			<groupId>com.huazai.aiyou.manager</groupId>
 			<artifactId>aiyou-manager-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
