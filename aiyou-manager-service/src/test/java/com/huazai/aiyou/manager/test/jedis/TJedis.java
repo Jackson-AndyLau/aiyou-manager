@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.huazai.aiyou.common.service.TbJedisClientService;
+import com.huazai.aiyou.manager.service.TbJedisClientService;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;

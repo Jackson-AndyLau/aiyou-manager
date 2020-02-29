@@ -20,6 +20,19 @@ import org.springframework.util.StringUtils;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.huazai.aiyou.common.constant.TbConstant;
+import com.huazai.aiyou.common.module.EasyUIDataGrid;
+import com.huazai.aiyou.common.response.AiyouResultData;
+import com.huazai.aiyou.common.utils.IDUtils;
+import com.huazai.aiyou.common.utils.JsonUtils;
+import com.huazai.aiyou.manager.mapper.TbItemDescMapper;
+import com.huazai.aiyou.manager.mapper.TbItemMapper;
+import com.huazai.aiyou.manager.pojo.TbItem;
+import com.huazai.aiyou.manager.pojo.TbItemDesc;
+import com.huazai.aiyou.manager.pojo.TbItemExample;
+import com.huazai.aiyou.manager.pojo.TbItemExample.Criteria;
+import com.huazai.aiyou.manager.service.TbItemService;
+import com.huazai.aiyou.manager.service.TbJedisClientService;
 
 /**
  * 
@@ -99,7 +112,7 @@ public class TbItemServiceImpl implements TbItemService
 		Date date = new Date();
 		// 补全商品信息
 		item.setId(itemId);
-		item.setStatus(Constant.TB_ITEM_STATUS_RESHELF);
+		item.setStatus(TbConstant.TB_ITEM_STATUS_RESHELF);
 		item.setCreated(date);
 		item.setUpdated(date);
 		// 初始化 TbItemDesc 对象
@@ -154,7 +167,7 @@ public class TbItemServiceImpl implements TbItemService
 	{
 		try
 		{
-			optByTbItemId(ids, Constant.TB_ITEM_STATUS_DELETE);
+			optByTbItemId(ids, TbConstant.TB_ITEM_STATUS_DELETE);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -168,7 +181,7 @@ public class TbItemServiceImpl implements TbItemService
 	{
 		try
 		{
-			optByTbItemId(ids, Constant.TB_ITEM_STATUS_INSTOCK);
+			optByTbItemId(ids, TbConstant.TB_ITEM_STATUS_INSTOCK);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -182,7 +195,7 @@ public class TbItemServiceImpl implements TbItemService
 	{
 		try
 		{
-			optByTbItemId(ids, Constant.TB_ITEM_STATUS_RESHELF);
+			optByTbItemId(ids, TbConstant.TB_ITEM_STATUS_RESHELF);
 		} catch (Exception e)
 		{
 			e.printStackTrace();

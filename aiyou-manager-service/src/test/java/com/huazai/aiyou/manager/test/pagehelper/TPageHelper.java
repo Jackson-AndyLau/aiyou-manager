@@ -8,12 +8,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.huazai.aiyou.common.mapper.TbItemDescMapper;
-import com.huazai.aiyou.common.mapper.TbItemMapper;
-import com.huazai.aiyou.common.pojo.TbItem;
-import com.huazai.aiyou.common.pojo.TbItemDesc;
-import com.huazai.aiyou.common.pojo.TbItemDescExample;
-import com.huazai.aiyou.common.pojo.TbItemExample;
+import com.huazai.aiyou.manager.mapper.TbItemDescMapper;
+import com.huazai.aiyou.manager.mapper.TbItemMapper;
+import com.huazai.aiyou.manager.pojo.TbItem;
+import com.huazai.aiyou.manager.pojo.TbItemDesc;
+import com.huazai.aiyou.manager.pojo.TbItemDescExample;
+import com.huazai.aiyou.manager.pojo.TbItemExample;
 
 /**
  * 

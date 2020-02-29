@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.huazai.aiyou.common.module.EasyUITreeNode;
 import com.huazai.aiyou.manager.mapper.TbItemCatMapper;
-import com.huazai.aiyou.manager.pojo.TbContentCategoryExample.Criteria;
 import com.huazai.aiyou.manager.pojo.TbItemCat;
 import com.huazai.aiyou.manager.pojo.TbItemCatExample;
+import com.huazai.aiyou.manager.pojo.TbItemCatExample.Criteria;
 import com.huazai.aiyou.manager.service.TbItemCatService;
 
 

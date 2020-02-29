@@ -11,13 +11,11 @@ import com.huazai.aiyou.common.module.EasyUIDataGrid;
 import com.huazai.aiyou.common.response.AiyouResultData;
 import com.huazai.aiyou.common.utils.JsonUtils;
 import com.huazai.aiyou.manager.mapper.TbItemDescMapper;
-import com.huazai.aiyou.manager.pojo.TbContentCategoryExample.Criteria;
 import com.huazai.aiyou.manager.pojo.TbItemDesc;
 import com.huazai.aiyou.manager.pojo.TbItemDescExample;
+import com.huazai.aiyou.manager.pojo.TbItemDescExample.Criteria;
 import com.huazai.aiyou.manager.service.TbItemDescService;
 import com.huazai.aiyou.manager.service.TbJedisClientService;
-
-
 
 /**
  * 
