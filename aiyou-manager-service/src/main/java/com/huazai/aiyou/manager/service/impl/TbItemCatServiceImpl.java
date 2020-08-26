@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.huazai.aiyou.common.module.EasyUIDataGrid;
 import com.huazai.aiyou.common.module.EasyUITreeNode;
 import com.huazai.aiyou.manager.mapper.TbItemCatMapper;
 import com.huazai.aiyou.manager.pojo.TbItemCat;
@@ -35,7 +36,7 @@ public class TbItemCatServiceImpl implements TbItemCatService
 	private TbItemCatMapper tbItemCatMapper;
 
 	@Override
-	public List<EasyUITreeNode> getTbItemCatList(Long parentId)
+	public List<EasyUITreeNode> getTbItemCatListById(Long parentId)
 	{
 		// 1、根据parentId查询商品类目列表
 		TbItemCatExample example = new TbItemCatExample();
@@ -54,5 +55,12 @@ public class TbItemCatServiceImpl implements TbItemCatService
 			resultList.add(treeNode);
 		}
 		return resultList;
+	}
+
+	@Override
+	public EasyUIDataGrid getTbItemCatList(Integer page, Integer rows, Object object)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

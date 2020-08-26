@@ -63,7 +63,7 @@ public interface TbItemService {
 	 *              </ul>
 	 * @createdTime 2017年06月11日
 	 * @param ids 商品ID集合
-	 * @return AiyouResultData
+	 * @return AiyouResultData 数据载体
 	 *
 	 * @version : V1.0.0
 	 */
@@ -79,7 +79,7 @@ public interface TbItemService {
 	 *              </ul>
 	 * @createdTime 2017年06月11日
 	 * @param ids 商品ID集合
-	 * @return AiyouResultData
+	 * @return AiyouResultData 数据载体
 	 *
 	 * @version : V1.0.0
 	 */
@@ -95,7 +95,7 @@ public interface TbItemService {
 	 *              </ul>
 	 * @createdTime 2017年06月11日
 	 * @param ids 商品ID集合
-	 * @return AiyouResultData
+	 * @return AiyouResultData 数据载体
 	 *
 	 * @version : V1.0.0
 	 */
@@ -111,7 +111,7 @@ public interface TbItemService {
 	 *              </ul>
 	 * @createdTime 2017年06月11日
 	 * @param itemId 商品ID
-	 * @return AiyouResultData
+	 * @return AiyouResultData 数据载体
 	 *
 	 * @version : V1.0.0
 	 */
@@ -143,9 +143,8 @@ public interface TbItemService {
 	 * @description 根据商品Id，查询商品详情
 	 *              </ul>
 	 * @createdTime 2017年06月18日
-	 * @param itemId
-	 * @return
-	 * @return TbItem
+	 * @param itemId 商品ID
+	 * @return TbItem 商品信息
 	 *
 	 * @version : V1.0.0
 	 */

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.huazai.aiyou.common.module.EasyUIDataGrid;
 import com.huazai.aiyou.common.response.AiyouResultData;
 import com.huazai.aiyou.common.utils.JsonUtils;
@@ -56,7 +57,7 @@ public class TbItemDescServiceImpl implements TbItemDescService
 	@Override
 	public AiyouResultData findTbItemDescById(long itemId)
 	{
-		TbItemDesc itemDesc;
+		TbItemDesc itemDesc = null;
 		try
 		{
 			// 查询商品信息
@@ -64,7 +65,9 @@ public class TbItemDescServiceImpl implements TbItemDescService
 			Criteria criteria = example.createCriteria();
 			criteria.andItemIdEqualTo(itemId);
 			List<TbItemDesc> list = tbItemDescMapper.selectByExampleWithBLOBs(example);
-			itemDesc = list.get(0);
+			if(CollectionUtils.isNotEmpty(list)) {
+				itemDesc = list.get(0);
+			}
 		} catch (Exception e)
 		{
 			e.printStackTrace();

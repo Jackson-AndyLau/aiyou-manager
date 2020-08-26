@@ -30,7 +30,7 @@ public interface TbItemDescService {
 	 * @param pageNum    当前页码
 	 * @param pageSize   页大小
 	 * @param tbItemDesc 查询条件
-	 * @return EasyUIDataGrid 数据载体
+	 * @return EasyUIDataGrid 数据列表
 	 *
 	 * @version : V1.0.0
 	 */
@@ -45,9 +45,8 @@ public interface TbItemDescService {
 	 * @description 根据商品ID获取商品描述
 	 *              </ul>
 	 * @createdTime 2017年06月11日
-	 * @param itemId
-	 * @return
-	 * @return AiyouResultData
+	 * @param itemId 商品ID
+	 * @return AiyouResultData 商品数据
 	 *
 	 * @version : V1.0.0
 	 */
@@ -62,9 +61,8 @@ public interface TbItemDescService {
 	 * @description 通过商品Id,获取商品描述
 	 *              </ul>
 	 * @createdTime 2017年06月18日
-	 * @param itemId
-	 * @return
-	 * @return TbItemDesc
+	 * @param itemId 商品ID
+	 * @return TbItemDesc 商品描述
 	 *
 	 * @version : V1.0.0
 	 */
